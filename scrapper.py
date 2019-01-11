@@ -35,7 +35,9 @@ def search_by_id(raw_html, id):
     table = html.find('table',{'id':'super-product-table'})
     data = table.find_all('a')
     for a in data:
-        print(a.text)
+        componenta = a.text.strip()
+        print()
 
-raw_r = simple_get("http://www.dezmembraricorunca.ro/masini-dezmembrate/bmw-320-seria-3-e46-2001-stoc-25.html")
+link = input("Input link to webpage: ")
+raw_r = simple_get(link)
 search_by_id(raw_r, 'calculator-airbag-bmw-320-seria-3-e46-2130.html')
