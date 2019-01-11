@@ -13,7 +13,6 @@ def simple_get(url):
                 return None
 
     except RequestException as e:
-        log_error('Error during requests to {0} : {1}'.format(url, str(e)))
         return None
 
 
@@ -25,10 +24,6 @@ def is_good_response(resp):
             and content_type.find('html') > -1)
 
 
-def log_error(e):
-    print(e)
-
-
 def search_by_id(raw_html, id):
 
     html = BeautifulSoup(raw_html,'html.parser')
@@ -36,7 +31,7 @@ def search_by_id(raw_html, id):
     data = table.find_all('a')
     for a in data:
         componenta = a.text.strip()
-        print()
+        print(componenta.lower().replace(' ','-').replace('--',''))
 
 link = input("Input link to webpage: ")
 raw_r = simple_get(link)
